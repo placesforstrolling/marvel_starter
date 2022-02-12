@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import AppBanner from "../appBanner/AppBanner";
+
 import './singleComicPage.scss';
 
 const SingleComicPage = () => {

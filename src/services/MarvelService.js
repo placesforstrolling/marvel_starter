@@ -28,7 +28,6 @@ const useMarvelService = () => {
     }
 
     const _transformCharacter = (char) => {
-        console.log(char.comics.items);
         return {
             id: char.id,
             name: char.name,
