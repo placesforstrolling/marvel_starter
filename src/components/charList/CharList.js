@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import PropTypes from 'prop-types';
 
 import Spinner from '../spinner/Spinner';
@@ -64,7 +65,13 @@ const CharList = (props) => {
             }
             
             return (
-                <li 
+                <CSSTransition
+                    in={loading}
+                    timeout={300}
+                    classNames="char"
+                    key={item.id}
+                >
+                    <li 
                     className="char__item"
                     ref={el => itemRefs.current[i] = el}
                     key={item.id}
@@ -76,13 +83,17 @@ const CharList = (props) => {
                     }}>
                         <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
                         <div className="char__name">{item.name}</div>
-                </li>
+                    </li>
+                </CSSTransition>
+                
             )
         });
         // А эта конструкция вынесена для центровки спиннера/ошибки
         return (
             <ul className="char__grid">
-                {items}
+               <TransitionGroup component={null}>
+                    {items}
+                </TransitionGroup>
             </ul>
         )
     }
